@@ -2,8 +2,10 @@ public class BankAccount {
     private int idNumber;
     private String name, surname;
 
-    int balance=0;
+    double balance=0;
     int lastTransaction;
+    private double interestRate;
+    private double bankCharges = 5;
 
     public BankAccount(int id, String name, String surname){
         this.idNumber = id;
@@ -27,13 +29,31 @@ public class BankAccount {
 
     public void getLastTransaction(){
         if(lastTransaction > 0){
-            System.out.println("Deposited " + lastTransaction);
+            System.out.println("Deposited = R" + lastTransaction);
         }else if(lastTransaction <0){
-            System.out.println("Withdrew " + Math.abs(lastTransaction)); //abs- so it returns a positive value
+            System.out.println("Withdrew = R" + Math.abs(lastTransaction)); //abs- so it returns a positive value
         }else{
             System.out.println("No transaction occurred");
         }
     }
+
+    public void setInterestRate(int interestRate) {
+        if(interestRate >= 0 && interestRate <= 50) {
+            this.interestRate = interestRate;
+        }else{
+            System.out.println("Interest Rate must be between 0 & 50%");
+        }
+    }
+    public double getInterestRate(){
+        return interestRate;
+ }
+
+ public void updateAllBalances(){
+        balance = balance - bankCharges;
+ }
+   /* public void setInterestRate(){
+        int interest = (balance * interestRate * 1)/100;
+    }*/
 
     public String toString(){
 
