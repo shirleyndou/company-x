@@ -6,12 +6,11 @@ public class Main {
         bankAccount.getLastTransaction();
         bankAccount.setWithdraw(50);
         bankAccount.getLastTransaction();
-        System.out.println("Current balance = " + bankAccount.balance);
+        System.out.println("Current balance = " + bankAccount.getBalance());
         bankAccount.setInterestRate(10);
         System.out.println("Interest Rate is " + bankAccount.getInterestRate());
         bankAccount.updateAllBalances();
-        System.out.println("Current balance = R" + bankAccount.balance);
-
+        System.out.println("Current balance = R" + bankAccount.getBalance());
 
     }
 }
