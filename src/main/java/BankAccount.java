@@ -6,8 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class BankAccount implements BankAccountInterface{
 BankAccountInterface bankAccount;
     private double balance=0;
@@ -16,6 +17,7 @@ BankAccountInterface bankAccount;
     private double interestRate;
     private static final double BANK_CHARGES = 5;
     private User user;
+
     @Autowired
     public BankAccount(BankAccountInterface bankAccount){this.bankAccount=bankAccount;}
 
@@ -39,7 +41,7 @@ BankAccountInterface bankAccount;
         return deposited;
     }
     //checks if a user withdrew money and tracks the last last transaction
-    @RequestMapping(value="api/user/withdraw", method = RequestMethod.GET)
+    @RequestMapping(value="api/user/withdraw", method = RequestMethod.POST)
     public double setWithdraw(double withdraw){
         if(withdraw !=0){
             balance -= withdraw;
@@ -62,7 +64,7 @@ BankAccountInterface bankAccount;
         return balance;
     }
 
-/*    public void setInterestRate(double interestRate) {
+   /* public void setInterestRate(double interestRate) {
         if(interestRate >= 0 && interestRate <= 50) {
             this.interestRate = interestRate;
         }else{
@@ -72,9 +74,9 @@ BankAccountInterface bankAccount;
 
     public double getInterestRate(){
         return interestRate;
-    }*/
-
-    @RequestMapping(value="api/user/bankCharges", method = RequestMethod.GET)
+    }
+*/
+    @RequestMapping(value="api/user/bankCharges", method = RequestMethod.POST)
  public void updateAllBalances(){
         balance = balance - BANK_CHARGES;
  }

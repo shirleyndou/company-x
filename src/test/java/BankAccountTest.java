@@ -15,8 +15,7 @@ public class BankAccountTest {
 
     @Test
     public void getLastTransaction() {
-        double deposit = bankAccount.setDeposit(500);
-     assertEquals(bankAccount.getBalance(), deposit);
+
     }
 
     @Test
