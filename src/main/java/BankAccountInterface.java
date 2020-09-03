@@ -1,6 +1,7 @@
+
 public interface BankAccountInterface {
-    void setDeposit(double deposited);
-    void setWithdraw(double withdraw);
+    double setDeposit(double deposited);
+    double setWithdraw(double withdraw);
     //void getLastTransaction();
     //void updateAllBalances();
 }

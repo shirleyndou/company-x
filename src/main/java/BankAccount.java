@@ -1,12 +1,24 @@
-public class BankAccount implements BankAccountInterface{
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Repository
+//@RestController
+//@RequestMapping
+@Service
+public class BankAccount implements BankAccountInterface{
+BankAccountInterface bankAccount;
     private double balance=0;
     private double lastTransaction;
     private long ID;
     private static final double BANK_CHARGES = 5;
     private User user;
+    @Autowired
+    public BankAccount(BankAccountInterface bankAccount){this.bankAccount=bankAccount;}
 
-    public BankAccount(){}
+    public BankAccount() {}
 
     public User getUser() {
         return user;
@@ -17,18 +29,20 @@ public class BankAccount implements BankAccountInterface{
     }
 
     //checks if a user deposited money and tracks the last last transaction
-    public void setDeposit(double deposited){
+    public double setDeposit(double deposited){
         if(deposited !=0){
             balance += deposited;
             lastTransaction = deposited;
         }
+        return deposited;
     }
     //checks if a user withdrew money and tracks the last last transaction
-    public void setWithdraw(double withdraw){
+    public double setWithdraw(double withdraw){
         if(withdraw !=0){
             balance -= withdraw;
             lastTransaction= -withdraw;
         }
+        return withdraw;
     }
 
     public void getLastTransaction(){
