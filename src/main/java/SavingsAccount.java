@@ -6,6 +6,7 @@ public class SavingsAccount extends BankAccount{
         super(bankAccount);
     }
     public SavingsAccount(){}
+
     public void setInterestRate(double interestRate) {
         if(interestRate >= 0 && interestRate <= 50) {
             this.interestRate = interestRate;

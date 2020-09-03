@@ -1,18 +1,19 @@
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-@Repository
-//@RestController
-//@RequestMapping
-@Service
+@Controller
 public class BankAccount implements BankAccountInterface{
 BankAccountInterface bankAccount;
     private double balance=0;
     private double lastTransaction;
     private long ID;
+    private double interestRate;
     private static final double BANK_CHARGES = 5;
     private User user;
     @Autowired
@@ -29,6 +30,7 @@ BankAccountInterface bankAccount;
     }
 
     //checks if a user deposited money and tracks the last last transaction
+    @RequestMapping(value="api/user/deposit", method = RequestMethod.POST)
     public double setDeposit(double deposited){
         if(deposited !=0){
             balance += deposited;
@@ -37,6 +39,7 @@ BankAccountInterface bankAccount;
         return deposited;
     }
     //checks if a user withdrew money and tracks the last last transaction
+    @RequestMapping(value="api/user/withdraw", method = RequestMethod.GET)
     public double setWithdraw(double withdraw){
         if(withdraw !=0){
             balance -= withdraw;
@@ -59,6 +62,19 @@ BankAccountInterface bankAccount;
         return balance;
     }
 
+/*    public void setInterestRate(double interestRate) {
+        if(interestRate >= 0 && interestRate <= 50) {
+            this.interestRate = interestRate;
+        }else{
+            System.out.println("Interest Rate must be between 0 & 50%");
+        }
+    }
+
+    public double getInterestRate(){
+        return interestRate;
+    }*/
+
+    @RequestMapping(value="api/user/bankCharges", method = RequestMethod.GET)
  public void updateAllBalances(){
         balance = balance - BANK_CHARGES;
  }
