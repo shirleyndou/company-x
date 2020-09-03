@@ -4,4 +4,5 @@ public interface BankAccountInterface {
     double setWithdraw(double withdraw);
     void getLastTransaction();
     void updateAllBalances();
+    void setInterestRate(double interestRate);
 }

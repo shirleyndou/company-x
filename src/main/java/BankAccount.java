@@ -64,7 +64,7 @@ BankAccountInterface bankAccount;
         return balance;
     }
 
-   /* public void setInterestRate(double interestRate) {
+    public void setInterestRate(double interestRate) {
         if(interestRate >= 0 && interestRate <= 50) {
             this.interestRate = interestRate;
         }else{
@@ -75,7 +75,7 @@ BankAccountInterface bankAccount;
     public double getInterestRate(){
         return interestRate;
     }
-*/
+
     @RequestMapping(value="api/user/bankCharges", method = RequestMethod.POST)
  public void updateAllBalances(){
         balance = balance - BANK_CHARGES;
