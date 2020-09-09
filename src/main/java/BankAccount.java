@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Service
 public class BankAccount implements BankAccountInterface{
 BankAccountInterface bankAccount;
     private double balance=0;
@@ -32,7 +32,6 @@ BankAccountInterface bankAccount;
     }
 
     //checks if a user deposited money and tracks the last last transaction
-    @RequestMapping(value="api/user/deposit", method = RequestMethod.POST)
     public double setDeposit(double deposited){
         if(deposited !=0){
             balance += deposited;
@@ -41,7 +40,6 @@ BankAccountInterface bankAccount;
         return deposited;
     }
     //checks if a user withdrew money and tracks the last last transaction
-    @RequestMapping(value="api/user/withdraw", method = RequestMethod.POST)
     public double setWithdraw(double withdraw){
         if(withdraw !=0){
             balance -= withdraw;
@@ -76,8 +74,7 @@ BankAccountInterface bankAccount;
         return interestRate;
     }
 
-    @RequestMapping(value="api/user/bankCharges", method = RequestMethod.POST)
- public void updateAllBalances(){
+    public void updateAllBalances(){
         balance = balance - BANK_CHARGES;
  }
 
