@@ -24,7 +24,7 @@ public class BankAccountController {
         return bankAccount.setWithdraw(withdraw);
     }
 
-    @GetMapping(path = "t/ransaction")
+    @GetMapping(path = "/transaction")
     public void getLastTransaction(){
         bankAccount.getLastTransaction();
     }
