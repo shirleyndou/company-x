@@ -14,6 +14,15 @@ public class BankAccountController {
         this.bankAccount = bankAccountInterface;
     }
 
+    @GetMapping("/hello")
+    public String hello(){
+        return "Hello Banker!";
+    }
+
+    @PostMapping(path = "/adduser")
+    public String insertUser(@RequestBody int Id, String name, String surname){
+        return bankAccount.insertUser(Id, name, surname);
+    }
     @PostMapping(path ="/deposit")
     public double setDeposit(@RequestBody double deposit){
         return bankAccount.setDeposit(deposit);

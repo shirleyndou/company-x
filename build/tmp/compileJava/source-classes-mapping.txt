@@ -1,3 +1,5 @@
+com/example/companyx/model/User.java
+ com.example.companyx.model.User
 com/example/companyx/service/SavingsAccount.java
  com.example.companyx.service.SavingsAccount
 com/example/companyx/service/BankAccount.java
@@ -6,7 +8,5 @@ com/example/companyx/CompanyxApplication.java
  com.example.companyx.CompanyxApplication
 com/example/companyx/controller/BankAccountController.java
  com.example.companyx.controller.BankAccountController
-com/example/companyx/model/User.java
- com.example.companyx.model.User
 com/example/companyx/dao/BankAccountInterface.java
  com.example.companyx.dao.BankAccountInterface

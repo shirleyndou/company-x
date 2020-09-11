@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class BankAccount implements BankAccountInterface{
     BankAccountInterface bankAccount;
@@ -16,10 +19,17 @@ public class BankAccount implements BankAccountInterface{
     private static final double BANK_CHARGES = 5;
     private User user;
 
+    List<User> users = new ArrayList<>();
+
     @Autowired
     public BankAccount(@Lazy BankAccountInterface bankAccount){this.bankAccount=bankAccount;}
 
     public BankAccount() {}
+
+   public String insertUser(int Id, String name, String surname){
+        users.add(new User(Id, name, surname));
+       return "Name " + name;
+   }
 
     public User getUser() {
         return user;
@@ -72,8 +82,9 @@ public class BankAccount implements BankAccountInterface{
         return interestRate;
     }
 
-    public void updateAllBalances(){
+    public Object updateAllBalances(){
         balance = balance - BANK_CHARGES;
+        return balance;
     }
 
 }
